@@ -11,7 +11,6 @@
 
 #include "ofMain.h"
 
-
 class ModelMatrix{
     
     ofShader shader;
