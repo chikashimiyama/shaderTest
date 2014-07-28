@@ -33,7 +33,7 @@ void ViewMatrix::setup(){
     colors[2].b = 1.0;
     
     modelMatrix.makeIdentityMatrix();
-    modelMatrix.translate(-0.1, 0.1, 0); // move the triangle
+    modelMatrix.translate(0.0, 0.0, 0.0); // move the triangle
     viewMatrix.makeIdentityMatrix();
     viewMatrix.makeLookAtViewMatrix(ofVec3f(0.0, 0.0, 5.0), ofVec3f(0.0,0.0,0.0), ofVec3f(0.0,1.0,0.0)); // setup camera
     projectionMatrix.makeIdentityMatrix();
@@ -46,7 +46,11 @@ void ViewMatrix::setup(){
 }
 
 void ViewMatrix::update(){
-    
+    float dist =  (float)ofGetMouseY() / (float)ofGetWindowHeight() * 5.0; // change distance
+    float position = (float)ofGetMouseX() / (float)ofGetWindowWidth() * 5.0 - 2.5; // move eye coordina
+    modelMatrix.rotate(1, 0, 0, 1.0); // rotate the triangle
+    viewMatrix.makeLookAtViewMatrix(ofVec3f(position, 0.0, dist), ofVec3f(0.0,0.0,0.0), ofVec3f(0.0,1.0,0.0)); // setup camera
+
 }
 
 void ViewMatrix::draw(){
